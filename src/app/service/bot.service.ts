@@ -10,6 +10,7 @@ export class BotService {
   geminiKey = "AIzaSyCgi4UT9risn5UYU9mcY0SxbLoZlWx6mrw";
   bot = new GoogleGenAI({apiKey: this.geminiKey});
   model = "gemini-2.0-flash";
+  temperature = 0.1
 
   constructor() { }
 
@@ -18,7 +19,8 @@ export class BotService {
       model: this.model,
       contents: query,
       config: {
-        systemInstruction: twoShotPrompt
+        systemInstruction: twoShotPrompt,
+        temperature: this.temperature
       }
     })
   }
@@ -28,7 +30,8 @@ export class BotService {
       model: this.model,
       contents: query,
       config: {
-        systemInstruction: twoShotPrompt
+        systemInstruction: twoShotPrompt,
+        temperature: this.temperature
       }
     })
   }
