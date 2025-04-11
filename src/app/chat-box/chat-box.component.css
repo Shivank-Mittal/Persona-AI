@@ -1,0 +1,13 @@
+:host{
+    display: block;
+    width: 800px;
+    min-height: 100vh;
+    background-color: #121212;
+    padding: 20px 5px;
+    position: relative;
+}
+
+
+app-chat-section {
+    margin-bottom: 20px;
+}

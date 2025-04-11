@@ -1,0 +1,8 @@
+<div class="flex w-full flex-col justify-end">
+    @for (chat of chats(); track $index) {
+        <app-chat-section [message]="chat.content" [role]="chat.role" [thinking]="chat.thinking"/>
+    }
+</div>
+
+
+<app-input  class="bottom-0 bg-[#121212] pt-5 mb-5 w-90"></app-input>

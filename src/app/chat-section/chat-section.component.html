@@ -1,0 +1,19 @@
+<div class="avatar">
+    <div class="relative">
+        <img class="w-10 h-10 rounded-sm" [src]="avatar()" alt="">
+        <span class="absolute bottom-0 left-8 transform translate-y-1/4 w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+    </div>
+</div>
+
+<div>
+    @if (thinking()) {
+        <div class="flex items-center space-x-1 ml-5">
+            <div class="w-2 h-2 bg-[#AAB8C2] rounded-full animate-bounce" style="animation-delay: 0s;"></div>
+            <div class="w-2 h-2 bg-[#AAB8C2] rounded-full animate-bounce" style="animation-delay: 0.2s;"></div>
+            <div class="w-2 h-2 bg-[#AAB8C2] rounded-full animate-bounce" style="animation-delay: 0.4s;"></div>
+        </div>
+    }
+</div>
+@if (!thinking()) {
+    <app-chat [message]="message()" [direction] = "direction()" />
+}

@@ -1,0 +1,12 @@
+:host {
+    display: block;
+    background-color: #121212;
+    text-align: center;
+}
+
+.chatbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5px;
+}

@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+:root {
+    /* Chat background colors */
+    --chat-bg: #121212;
+    --bubble-bot-bg: #1C1F26;
+    --bubble-user-bg: #1E1E1E;
+
+    /* Text colors */
+    --text-primary: #F1F1F1;
+    --text-muted: #888888;
+
+    /* Avatar sizes */
+    --avatar-size: 40px;
+
+    /* Message bubble */
+    --bubble-radius: 16px;
+    --bubble-padding-x: 16px;
+    --bubble-padding-y: 12px;
+    --bubble-max-width: 60%;
+
+    /* Spacing */
+    --spacing-s: 8px;
+    --spacing-m: 16px;
+    --spacing-l: 24px;
+
+    /* Fonts */
+    --font-size-sm: 16px;
+    --font-size-xs: 12px;
+}

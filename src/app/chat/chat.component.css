@@ -1,0 +1,8 @@
+:host {
+    background-color: #1C1F26;
+    color: var(--text-primary);
+    font-size: var( --font-size-sm);
+    padding: 12px 16px;
+    border-radius: 16px;
+    word-wrap: break-word;
+}

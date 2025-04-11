@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    align-items: flex-end;
+}
+
+:host > app-chat-section {
+    margin-bottom: 10px;
+}
+
+app-chat {
+    margin: 0 25px;
+    max-width: 70%;
+    text-align: left;
+}
