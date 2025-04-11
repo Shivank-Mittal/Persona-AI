@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { GoogleGenAI } from '@google/genai'
 import { twoShotPrompt} from '../prompts'
+import { environment } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BotService {
 
-  geminiKey = "AIzaSyCgi4UT9risn5UYU9mcY0SxbLoZlWx6mrw";
+  geminiKey = environment.geminiKey
   bot = new GoogleGenAI({apiKey: this.geminiKey});
   model = "gemini-2.0-flash";
   temperature = 0.1
