@@ -28,4 +28,8 @@
     /* Fonts */
     --font-size-sm: 16px;
     --font-size-xs: 12px;
+
+    /* Status */
+    --online:  green;
+    --offline: red;
 }

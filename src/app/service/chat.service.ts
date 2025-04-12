@@ -37,16 +37,16 @@ export class ChatService {
     this.updateChat(response.text || "Sorry no answer is found")
   }
 
-  async findResponseStream(query: string) {
-    const role = ROLE.SYSTEM
-    this.AddChat('', role, true)
-    const response = await this.askingService.askStream(query)
-    this.chat.update(v => [...v.slice(0, v.length - 1
-    )])
-    for await (const res of response) {
-      this.AddChat(res.text || "Sorry no answer is found", role, false)
-    }
-  }
+  // async findResponseStream(query: string) {
+  //   const role = ROLE.SYSTEM
+  //   this.AddChat('', role, true)
+  //   const response = await this.askingService.askStream(query)
+  //   this.chat.update(v => [...v.slice(0, v.length - 1
+  //   )])
+  //   for await (const res of response) {
+  //     this.AddChat(res.text || "Sorry no answer is found", role, false)
+  //   }
+  // }
 
   AddChat(content: string, role: ROLE, thinking?: boolean) {
     this.chat.update((v) => [...v, {role , content, thinking}])

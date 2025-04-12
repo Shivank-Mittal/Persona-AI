@@ -12,3 +12,11 @@ app-chat {
     max-width: 70%;
     text-align: left;
 }
+
+.online {
+    background-color: var(--online) ;
+}
+
+.offline {
+    background-color: var(--offline) ;
+}
