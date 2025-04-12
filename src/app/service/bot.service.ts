@@ -32,7 +32,11 @@ export class BotService {
   // }
 
   async ask(query: string) {
-    return await firstValueFrom(this.http.get<{text: string, role: string, token_count: number}>(`${this.baseURL}/${query}`))
+    return await firstValueFrom(this.http.post<{text: string, role: string, token_count: number}>(
+      `${this.baseURL}/chat`, {
+        content: query
+      }
+    ))
   }
 
   async askStream(query: string) {

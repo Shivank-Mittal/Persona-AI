@@ -10,7 +10,7 @@ export class HealthcheckService implements OnDestroy {
   baseURL = environment.baseURL
   http = inject(HttpClient)
 
-  backendHealthCheck$ = this.http.get<Observable<boolean>>(this.baseURL+'/chat').pipe( 
+  backendHealthCheck$ = this.http.get<Observable<boolean>>(this.baseURL+'/server').pipe( 
     repeat({delay: 30000}),
     catchError(()=> of(false)),
     retry()
