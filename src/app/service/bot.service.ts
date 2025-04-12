@@ -20,17 +20,6 @@ export class BotService {
 
   constructor() { }
 
-  // async ask(query: string) {
-  //   return await this.bot.models.generateContent({
-  //     model: this.model,
-  //     contents: query,
-  //     config: {
-  //       systemInstruction: twoShotPrompt,
-  //       temperature: this.temperature
-  //     }
-  //   })
-  // }
-
   async ask(query: string) {
     return await firstValueFrom(this.http.post<{text: string, role: string, token_count: number}>(
       `${this.baseURL}/chat`, {

@@ -15,15 +15,15 @@ export class HealthcheckService implements OnDestroy {
     catchError(()=> of(false)),
     retry()
   );
-  chatSystemHeathCheck$ = this.http.get<Observable<boolean>>(this.baseURL+'/connected').pipe( 
-    repeat({delay: 3000}),
-    catchError(()=> of(false)),
-    retry()
-  );
+  // chatSystemHeathCheck$ = this.http.get<Observable<boolean>>(this.baseURL+'/connected').pipe( 
+  //   repeat({delay: 3000}),
+  //   catchError(()=> of(false)),
+  //   retry()
+  // );
 
-  isOnline$ = combineLatest([this.backendHealthCheck$, this.chatSystemHeathCheck$]).pipe(
+  isOnline$ = this.backendHealthCheck$.pipe(
     tap(responses => {
-      if(responses[0] && responses[1]){
+      if(responses){
         this.isOnline.update( _ => true)
       }else {
         this.isOnline.update( _ => false)
