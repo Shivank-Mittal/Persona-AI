@@ -1,7 +1,7 @@
 export enum ROLE {
     ASSISTANT= "ASSISTANT",
     USER = "USER",
-    SYSTEM = "SYSTEM"
+    SYSTEM = "MODEL"
 }
 
 

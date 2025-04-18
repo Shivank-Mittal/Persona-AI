@@ -10,8 +10,6 @@ import { firstValueFrom, map } from 'rxjs';
 })
 export class BotService {
 
-  geminiKey = environment.geminiKey
-  bot = new GoogleGenAI({apiKey: this.geminiKey});
   model = "gemini-2.0-flash";
   temperature = 0.1
   baseURL = environment.baseURL
@@ -20,22 +18,31 @@ export class BotService {
 
   constructor() { }
 
-  async ask(query: string) {
+  async ask(query: {role: string, parts:{text: string}[]}[]) {
     return await firstValueFrom(this.http.post<{text: string, role: string, token_count: number}>(
-      `${this.baseURL}/chat`, {
+      `${this.baseURL}/smart`, {
         content: query
       }
     ))
   }
 
-  async askStream(query: string) {
-    return await this.bot.models.generateContentStream({
-      model: this.model,
-      contents: query,
-      config: {
-        systemInstruction: twoShotPrompt,
-        temperature: this.temperature
+  async askInWithHistory(query: {role: string, parts:{text: string}[]}[]) {
+    debugger
+    return await firstValueFrom(this.http.post<{text: string, role: string, token_count: number}>(
+      `${this.baseURL}/smart`, {
+        content: query
       }
-    })
+    ))
   }
+
+  // async askStream(query: string) {
+  //   return await this.bot.models.generateContentStream({
+  //     model: this.model,
+  //     contents: query,
+  //     config: {
+  //       systemInstruction: twoShotPrompt,
+  //       temperature: this.temperature
+  //     }
+  //   })
+  // }
 }

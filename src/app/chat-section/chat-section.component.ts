@@ -22,7 +22,4 @@ export class ChatSectionComponent {
 
   healthcheck = inject(HealthcheckService);
   status = this.healthcheck.isOnline
-
-
-  
 }

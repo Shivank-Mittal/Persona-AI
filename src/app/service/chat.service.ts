@@ -21,7 +21,7 @@ export class ChatService {
   constructor() {
     effect(() => {
       if(this.lastMessage().role === ROLE.USER) {
-        this.findResponse(this.lastMessage().content);
+        this.findResponseWithHistory();
       }
     })
    }
@@ -30,12 +30,34 @@ export class ChatService {
     this.chat.update((v) => [...v, {role: ROLE.USER , content}])
   }
 
-  async findResponse(query: string) {
+  async findResponse() {
     const role = ROLE.SYSTEM
+    const lastChat = this.chat()[this.chat().length - 1];
+    const context:Chat[] = [lastChat]
     this.AddChat('', role, true)
-    const response = await this.askingService.ask(query)
+    const response = await this.askingService.ask(this.composeContent(context))
     this.updateChat(response.text || "Sorry no answer is found")
   }
+
+  async findResponseWithHistory() {
+    const role = ROLE.SYSTEM
+    this.AddChat('', role, true)
+    const response = await this.askingService.askInWithHistory(this.composeContent(this.chat().filter( c => !!c.content)))
+    this.updateChat(response.text || "Sorry no answer is found")
+  }
+
+  composeContent(chats: Chat[]): {role: string, parts:{text: string}[]}[] {
+    return chats.filter( c => !!c.content).map(chat  => {
+      return {
+        role: chat.role.toLocaleLowerCase(),
+        parts: [{
+          "text" : chat.content
+        }]
+      }
+    });
+  }
+
+
 
   // async findResponseStream(query: string) {
   //   const role = ROLE.SYSTEM
